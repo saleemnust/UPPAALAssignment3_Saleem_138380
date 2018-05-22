@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+chan g11_red, nust_red, islamabad_red, airport_red;</declaration>
+	<template>
+		<name x="5" y="5">g11</name>
+		<declaration>// Place local declarations here.
+clock timer;</declaration>
+		<location id="id0" x="-272" y="-153">
+			<name x="-289" y="-187">Yellow</name>
+			<label kind="invariant" x="-255" y="-161">timer&lt;=5</label>
+		</location>
+		<location id="id1" x="-195" y="-8">
+			<name x="-212" y="8">Green</name>
+			<label kind="invariant" x="-178" y="-17">timer&lt;=35</label>
+		</location>
+		<location id="id2" x="-365" y="-8">
+			<name x="-382" y="8">Red</name>
+		</location>
+		<init ref="id1"/>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-374" y="-102">timer==5</label>
+			<label kind="synchronisation" x="-416" y="-127">g11_red!</label>
+			<nail x="-314" y="-85"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-272" y="-8">timer==35</label>
+			<label kind="assignment" x="-187" y="-42">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-347" y="-25">airport_red?</label>
+			<label kind="assignment" x="-347" y="-8">timer=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>nust</name>
+		<declaration>clock timer;</declaration>
+		<location id="id3" x="-127" y="-170">
+			<name x="-144" y="-212">Yellow</name>
+			<label kind="invariant" x="-102" y="-178">timer&lt;=5</label>
+		</location>
+		<location id="id4" x="-51" y="-17">
+			<name x="-59" y="0">Green</name>
+			<label kind="invariant" x="-34" y="-34">timer&lt;=35</label>
+		</location>
+		<location id="id5" x="-221" y="-17">
+			<name x="-238" y="-1">Red</name>
+		</location>
+		<init ref="id5"/>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id5"/>
+			<label kind="guard" x="-238" y="-110">timer==5</label>
+			<label kind="synchronisation" x="-280" y="-136">nust_red!</label>
+			<nail x="-170" y="-102"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-127" y="-17">timer==35</label>
+			<label kind="assignment" x="-51" y="-59">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-203" y="-34">g11_red?</label>
+			<label kind="assignment" x="-203" y="-17">timer=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>islamabad</name>
+		<declaration>clock timer;</declaration>
+		<location id="id6" x="-280" y="-153">
+			<name x="-306" y="-195">Yellow</name>
+			<label kind="invariant" x="-382" y="-93">timer&lt;=5</label>
+		</location>
+		<location id="id7" x="-195" y="-8">
+			<name x="-212" y="8">Green</name>
+			<label kind="invariant" x="-272" y="-8">timer&lt;=35</label>
+		</location>
+		<location id="id8" x="-365" y="-8">
+			<name x="-382" y="8">Red</name>
+		</location>
+		<init ref="id8"/>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id8"/>
+			<label kind="guard" x="-255" y="-170">timer==5</label>
+			<label kind="synchronisation" x="-425" y="-119">islamabad_red!</label>
+			<nail x="-314" y="-93"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="guard" x="-170" y="-17">timer==35</label>
+			<label kind="assignment" x="-187" y="-34">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-347" y="-25">nust_red?</label>
+			<label kind="assignment" x="-347" y="-8">timer=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>airport</name>
+		<declaration>clock timer;</declaration>
+		<location id="id9" x="-280" y="-144">
+			<name x="-297" y="-178">Yellow</name>
+			<label kind="invariant" x="-374" y="-102">timer&lt;=5</label>
+		</location>
+		<location id="id10" x="-195" y="-8">
+			<name x="-212" y="8">Green</name>
+			<label kind="invariant" x="-272" y="-8">timer&lt;=70</label>
+		</location>
+		<location id="id11" x="-365" y="-8">
+			<name x="-382" y="8">Red</name>
+		</location>
+		<init ref="id11"/>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id11"/>
+			<label kind="guard" x="-255" y="-153">timer==5</label>
+			<label kind="synchronisation" x="-416" y="-119">airport_red!</label>
+			<nail x="-314" y="-85"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id9"/>
+			<label kind="guard" x="-178" y="-17">timer==70</label>
+			<label kind="assignment" x="-187" y="-42">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-347" y="-25">islamabad_red?</label>
+			<label kind="assignment" x="-347" y="-8">timer=0</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+
+// List one or more processes to be composed into a system.
+system g11,nust,islamabad,airport;</system>
+	<queries>
+		<query>
+			<formula>A[] not (g11.Red &amp;&amp; nust.Red &amp;&amp; airport.Red &amp;&amp; islamabad.Red)
+			</formula>
+			<comment>Deadlock Avoidance Property Verification: For all future states, all indicators must not be red at the same time.
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; islamabad.Green
+			</formula>
+			<comment>Bounded Liveness Property verification: There exist a state in future where islamabad signal will be green.
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; nust.Green
+			</formula>
+			<comment>Bounded Liveness Property verification: There exist a state in future where nust signal will be green.
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; airport.Green
+			</formula>
+			<comment>Bounded Liveness Property verification: There exist a state in future where airport signal will be green.
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; g11.Green
+			</formula>
+			<comment>Bounded Liveness Property verification: There exist a state in future where g11 signal will be green.
+			</comment>
+		</query>
+		<query>
+			<formula>A[] not (g11.Green &amp;&amp; nust.Green &amp;&amp; airport.Green &amp;&amp; islamabad.Green)
+			</formula>
+			<comment>Mutex Property Verification: For all future states all indicators must not be green at the same time.
+			</comment>
+		</query>
+	</queries>
+</nta>
